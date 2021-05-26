@@ -7,12 +7,12 @@ ListaDomande :: ListaDomande(){
 }
 
 void ListaDomande :: carica_domande(){
-	Domanda dom[50];
+	Domanda dom[60];
 	ifstream in;
 	in.open("domande.txt");
 	string s1;
 	int c;
-	for(int i=0; i<50; i++){ 
+	for(int i=0; i<60; i++){ 
 		if(getline(in,s1)){
 			dom[i].setDomanda(s1);
 			for (int j=0; j<4; j++){
@@ -27,11 +27,11 @@ void ListaDomande :: carica_domande(){
 	in.close();
 	
 	int casuale;
-	bool gia_inserito[50];
-	for (int i=0; i<50; i++) gia_inserito[i] = false;
+	bool gia_inserito[60];
+	for (int i=0; i<60; i++) gia_inserito[i] = false;
 
 	for (int i=0; i<16; i++){
-		casuale = rand()%50;
+		casuale = rand()%60;
 		if (!gia_inserito[casuale]){
 			gia_inserito[casuale] = true;
 			d[i].setDomanda(dom[casuale].getDomanda());
@@ -49,7 +49,6 @@ void ListaDomande :: visualizza_domande(Domanda d1[], int i){
 	for (int j=0; j<i; j++){
 		cout<<d1[j].getDomanda()<<endl;
 	}
-	cout<<"-------------------------------------------------"<<endl;
 	cin.clear(); cin.ignore();
 	getline(cin,s1);
 }
@@ -57,7 +56,7 @@ void ListaDomande :: visualizza_domande(Domanda d1[], int i){
 void ListaDomande :: aggiungi_domanda(){
 	ofstream out;
 	out.open("domande.txt", ios::app);
-	system("clear");
+	system("cls");
 	string s1;
 	int c;
 	cout<<"Inserisci testo domanda: ";
